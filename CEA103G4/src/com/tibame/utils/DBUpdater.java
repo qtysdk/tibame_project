@@ -6,17 +6,13 @@ import java.sql.SQLException;
 
 public class DBUpdater {
 
-    static interface PreparedStatementSetter {
-        public void configure(PreparedStatement preparedStatement);
-    }
-
-    public void execute(String sql, PreparedStatementSetter preparedStatementSetter) {
+    public static void execute(String sql, PreparedStatementSetter preparedStatementSetter) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
 
         try {
-            con = DataSourceManager.getDataSource().getConnection();
+            con = DataSourceManager.getConnection();
             pstmt = con.prepareStatement(sql);
             preparedStatementSetter.configure(pstmt);
             pstmt.executeUpdate();

@@ -19,7 +19,10 @@ import org.json.JSONObject;
 
 import com.product.model.ProductVO;
 import com.seller_follow.model.Seller_FollowVO;
+import com.tibame.utils.DBUpdater;
+
 import com.tibame.utils.DataSourceManager;
+import com.tibame.utils.PreparedStatementSetter;
 
 // ProductTypeDao
 public class Product_TypeDAO  implements Product_TypeDAO_interface  {
@@ -45,124 +48,40 @@ public class Product_TypeDAO  implements Product_TypeDAO_interface  {
 	private static final String UPDATE = 
 			"UPDATE PRODUCT_TYPE set pdtype_name=? where pdtype_no = ?";
 
-	
-
 	@Override
-	public void insert(Product_TypeVO product_typeVO){
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
-		try {
-
-			con = dataSource.getConnection();
-			pstmt = con.prepareStatement(INSERT_STMT);
-			
-			pstmt.setString(1, product_typeVO.getPdtype_name());
-			
-			pstmt.executeUpdate();
-			
-
-			// Handle any SQL errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
-		}
-	}
+    public void insert(Product_TypeVO product_TypeVO) {
+        DBUpdater.execute(INSERT_STMT, new PreparedStatementSetter() {
+            
+            @Override
+            public void configure(PreparedStatement preparedStatement) throws SQLException {
+                preparedStatement.setString(1, product_TypeVO.getPdtype_name());
+            }
+        });
+    }
+   
 	
 	@Override
 	public void update(Product_TypeVO product_typeVO){
+        DBUpdater.execute(UPDATE, new PreparedStatementSetter() {
 
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
-		try {
-			con = dataSource.getConnection();
-			pstmt = con.prepareStatement(UPDATE);
-
-			pstmt.setString(1, product_typeVO.getPdtype_name());
-			pstmt.setInt(2, product_typeVO.getPdtype_no());
-			
-
-			pstmt.executeUpdate();
-			
-			
-			// Handle any driver errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
-		}
+            @Override
+            public void configure(PreparedStatement preparedStatement) throws SQLException {
+                preparedStatement.setString(1, product_typeVO.getPdtype_name());
+                preparedStatement.setInt(2, product_typeVO.getPdtype_no());
+            }
+        });
 	}
 
-	@Override
-	public void delete(Integer pdtype_no){
+    @Override
+    public void delete(Integer pdtype_no) {
+        DBUpdater.execute(DELETE, new PreparedStatementSetter() {
 
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
-		try {
-
-			con = dataSource.getConnection();
-			pstmt = con.prepareStatement(DELETE);
-			
-			pstmt.setInt(1, pdtype_no);
-
-			pstmt.executeUpdate();
-
-			// Handle any driver errors
-		} catch (SQLException se) {
-			throw new RuntimeException("A database error occured. "
-					+ se.getMessage());
-			// Clean up JDBC resources
-		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException se) {
-					se.printStackTrace(System.err);
-				}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (Exception e) {
-					e.printStackTrace(System.err);
-				}
-			}
-		}
-	}
+            @Override
+            public void configure(PreparedStatement preparedStatement) throws SQLException {
+                preparedStatement.setInt(1, pdtype_no);
+            }
+        });
+    }
 
 	@Override
 	public Product_TypeVO findByPrimaryKey(Integer pdtype_no){
