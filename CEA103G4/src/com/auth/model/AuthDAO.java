@@ -21,7 +21,7 @@ import com.tibame.utils.DataSourceManager;
 
 public class AuthDAO implements AuthDAO_interface {
 
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource ds = DataSourceManager.getDataSource();
     
 	private static final String INSERT_STMT = "insert into AUTH (FUNNO,EMPNO,AUTH_NO) values (?, ?, ?)";
 	private static final String UPDATE_STMT = "update AUTH set AUTH_NO=? where EMPNO=? and FUNNO=?";

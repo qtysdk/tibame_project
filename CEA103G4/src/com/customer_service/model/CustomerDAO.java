@@ -17,7 +17,7 @@ import com.tibame.utils.DataSourceManager;
 
 
 public class CustomerDAO implements CustomerDAO_interface{
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource ds = DataSourceManager.getDataSource();
 	
 	private static final String INSERT_STMT = 
 			"INSERT INTO CUSTOMER_SERVICE (USER_ID,CONTENT,CASE_STATE,EMPNO,EMP_RESPONSE,CASE_TIME ) VALUES ( ?, ?, ?, ?, ?, ?)";

@@ -17,7 +17,7 @@ import com.tibame.utils.DataSourceManager;
 
 public class Seller_FollowDAO implements Seller_FollowDAO_interface {
 
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource ds = DataSourceManager.getDataSource();
 	
     //關注賣家,買家可以關注賣家(新增)、可以查詢自己關注的清單(查詢)、可以取消關注的賣家(刪除)
 	private static final String INSERT_STMT = 

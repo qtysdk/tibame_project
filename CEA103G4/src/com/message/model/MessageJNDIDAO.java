@@ -12,7 +12,7 @@ import com.tibame.utils.DataSourceManager;
 
 public class MessageJNDIDAO implements MessageDAO_interface{
 
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource ds = DataSourceManager.getDataSource();
     
 	private static final String INSERT_STMT = 
 			"INSERT INTO `MESSAGE` (`USER_ID`,`CONTENT`,`SELLER_ID`,`MESSAGE_TIME`) VALUES (?, ?, ?, ?)";

@@ -60,7 +60,7 @@ public class LiveGifReader extends HttpServlet {
 
 	public void init() throws ServletException {
 		try {
-		    con = DataSourceManager.get().getConnection();
+		    con = DataSourceManager.getDataSource().getConnection();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

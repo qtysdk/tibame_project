@@ -21,9 +21,10 @@ import com.product.model.ProductVO;
 import com.seller_follow.model.Seller_FollowVO;
 import com.tibame.utils.DataSourceManager;
 
+// ProductTypeDao
 public class Product_TypeDAO  implements Product_TypeDAO_interface  {
 
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource dataSource = DataSourceManager.getDataSource();
 	
 	//新增商品類別
 	private static final String INSERT_STMT = 
@@ -54,7 +55,7 @@ public class Product_TypeDAO  implements Product_TypeDAO_interface  {
 
 		try {
 
-			con = ds.getConnection();
+			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(INSERT_STMT);
 			
 			pstmt.setString(1, product_typeVO.getPdtype_name());
@@ -92,7 +93,7 @@ public class Product_TypeDAO  implements Product_TypeDAO_interface  {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = ds.getConnection();
+			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(UPDATE);
 
 			pstmt.setString(1, product_typeVO.getPdtype_name());
@@ -133,7 +134,7 @@ public class Product_TypeDAO  implements Product_TypeDAO_interface  {
 
 		try {
 
-			con = ds.getConnection();
+			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(DELETE);
 			
 			pstmt.setInt(1, pdtype_no);
@@ -173,7 +174,7 @@ public class Product_TypeDAO  implements Product_TypeDAO_interface  {
 
 		try {
 
-			con = ds.getConnection();
+			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(GET_ONE_STMT);
 
 			pstmt.setInt(1, pdtype_no);
@@ -230,7 +231,7 @@ public class Product_TypeDAO  implements Product_TypeDAO_interface  {
 		
 		
 		try {		
-			con = ds.getConnection();
+			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(GET_ALL_STMT);
 			rs = pstmt.executeQuery();
 			
@@ -282,7 +283,7 @@ public class Product_TypeDAO  implements Product_TypeDAO_interface  {
 	
 		try {
 	
-			con = ds.getConnection();
+			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(GET_Products_ByPdtype_no);
 			pstmt.setInt(1, pdtype_no);
 			rs = pstmt.executeQuery();

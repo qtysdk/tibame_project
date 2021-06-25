@@ -12,7 +12,7 @@ import com.tibame.utils.DataSourceManager;
 
 public class Product_ReportDAO implements Product_ReportDAO_interface {
 
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource ds = DataSourceManager.getDataSource();
     
 	//前台會員新增商品檢舉(時間sql已預設當下時間,檢舉狀態已預設未處理,故新增資料時不需再填寫)
 	private static final String INSERT_STMT = 

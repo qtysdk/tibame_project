@@ -17,7 +17,7 @@ public class DataSourceManager {
         }
     }
 
-    public static DataSource get() {
+    public static DataSource getDataSource() {
         return ds;
     }
 

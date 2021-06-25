@@ -12,7 +12,7 @@ import com.tibame.utils.DataSourceManager;
 
 public class NoticeJNDIDAO implements NoticeDAO_interface{
 
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource ds = DataSourceManager.getDataSource();
     
 	private static final String INSERT_STMT = 
 			"INSERT INTO `NOTICE` (`USER_ID`,`NOC_CONTENT`,`NOC_STATE`) VALUES (?, ?, ?)";

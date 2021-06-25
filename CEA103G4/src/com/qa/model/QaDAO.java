@@ -11,7 +11,7 @@ import com.tibame.utils.DataSourceManager;
 
 public class QaDAO implements QaDAO_interface {
 	
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource ds = DataSourceManager.getDataSource();
     
 	private static final String INSERT_STMT = 
 			"INSERT INTO `QA` (`EMPNO`,`QA_DATE`,`QA_TYPE`,`QUESTION`,`ANSWER`) VALUES (?, ?, ?, ?, ?)";

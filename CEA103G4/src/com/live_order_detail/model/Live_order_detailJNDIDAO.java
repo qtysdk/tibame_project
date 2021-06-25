@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 import com.tibame.utils.DataSourceManager;
 
 public class Live_order_detailJNDIDAO implements Live_order_detailDAO_interface {
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource ds = DataSourceManager.getDataSource();
 
 	private static final String INSERT_STMT = "INSERT INTO LIVE_ORDER_DETAIL (LIVE_ORDER_NO,PRODUCT_NO,PRICE,PRODUCT_NUM) VALUES (?,?,?,?)";
 	private static final String GET_ALL_STMT = "SELECT * FROM LIVE_ORDER_DETAIL ORDER BY LIVE_ORDER_NO AND PRODUCT_NO";

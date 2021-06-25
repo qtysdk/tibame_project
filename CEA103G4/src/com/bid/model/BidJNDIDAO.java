@@ -16,7 +16,7 @@ import com.bid.model.BidVO;
 import com.tibame.utils.DataSourceManager;
 
 public class BidJNDIDAO implements BidDAO_interface {
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource ds = DataSourceManager.getDataSource();
 
 	private static final String INSERT_STMT = "INSERT INTO BID (USER_ID,PRODUCT_NO,BID_PRICE) VALUES (?, ?, ?)";
 	private static final String GET_ALL_STMT = "SELECT * FROM BID ORDER BY BID_NO";

@@ -17,7 +17,7 @@ import com.tibame.utils.DataSourceManager;
 
 public class FunDAO implements FunDAO_interface {
 
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource ds = DataSourceManager.getDataSource();
 
 	private static final String INSERT_STMT = "INSERT INTO FUN (FUN_NAME,STATE) VALUES (?，?)";
 	private static final String GET_ALL_STMT = "SELECT FUNNO,FUN_NAME,STATE FROM FUN ORDER BY FUNNO";

@@ -5,6 +5,11 @@ import java.util.Set;
 
 import com.product.model.ProductVO;
 
+// IProductType
+// ProductTypeIFace
+// AbsProudctType
+// ProductType
+// ---> ProductTypeImpl
 public interface Product_TypeDAO_interface {
 
 	public void insert(Product_TypeVO product_typeVO);

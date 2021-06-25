@@ -21,7 +21,7 @@ import com.tibame.utils.DataSourceManager;
 public class ProductDAO implements ProductDAO_interface {
 
 	
-	private static DataSource ds = DataSourceManager.get();
+	private static DataSource ds = DataSourceManager.getDataSource();
 	
 	//新增商品 賣家上架功能
 	private static final String INSERT_STMT = "INSERT INTO PRODUCT (product_name,product_info,product_price,product_remaining,product_state,product_photo,user_id,pdtype_no) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";

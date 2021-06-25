@@ -12,7 +12,7 @@ import com.tibame.utils.DataSourceManager;
 
 public class AdDAO implements AdDAO_interface {
 	
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource ds = DataSourceManager.getDataSource();
 	
 	private static final String INSERT_STMT = 
 			"INSERT INTO `AD` (`EMPNO`,`AD_CONTENT`,`AD_PHOTO`,`AD_STATE`,`AD_START_DATE`,`AD_END_DATE`,`AD_URL`) VALUES (?, ?, ?, ?, ?, ?, ?)";

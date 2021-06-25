@@ -17,7 +17,7 @@ import com.tibame.utils.DataSourceManager;
 
 public class Order_detailDAO implements Order_detailDAO_interface{
 
-    private static DataSource ds = DataSourceManager.get();
+    private static DataSource ds = DataSourceManager.getDataSource();
 	
 	private static final String INSERT_STMT = 
 			"INSERT INTO `ORDER_DETAIL` (`ORDER_NO`,`ORDER_PRICE`,`PRODUCT_NO`,`PRODUCT_NUM`) VALUES (?, ?, ?, ?)";
