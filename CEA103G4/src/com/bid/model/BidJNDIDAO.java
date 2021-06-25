@@ -13,17 +13,10 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.bid.model.BidVO;
+import com.tibame.utils.DataSourceManager;
 
 public class BidJNDIDAO implements BidDAO_interface {
-	private static DataSource ds = null;
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/admin");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
+    private static DataSource ds = DataSourceManager.get();
 
 	private static final String INSERT_STMT = "INSERT INTO BID (USER_ID,PRODUCT_NO,BID_PRICE) VALUES (?, ?, ?)";
 	private static final String GET_ALL_STMT = "SELECT * FROM BID ORDER BY BID_NO";

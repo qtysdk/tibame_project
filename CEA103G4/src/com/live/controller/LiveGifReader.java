@@ -9,6 +9,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.sql.DataSource;
 
+import com.tibame.utils.DataSourceManager;
+
 public class LiveGifReader extends HttpServlet {
 
 	Connection con;
@@ -58,12 +60,7 @@ public class LiveGifReader extends HttpServlet {
 
 	public void init() throws ServletException {
 		try {
-			Context ctx = new javax.naming.InitialContext();
-			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/admin");
-			con = ds.getConnection();
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		    con = DataSourceManager.get().getConnection();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

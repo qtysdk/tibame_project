@@ -13,16 +13,11 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.tibame.utils.DataSourceManager;
+
 public class LiveJNDIDAO implements LiveDAO_interface {
-	private static DataSource ds = null;
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/admin");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
+	
+	private static DataSource ds = DataSourceManager.get();
 
 	private static final String INSERT_STMT = "INSERT INTO LIVE (LIVE_TYPE,LIVE_NAME,LIVE_TIME,LIVE_STATE,USER_ID,EMPNO,LIVE_PHOTO,LIVE_ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String GET_ALL_STMT = "SELECT * FROM LIVE ORDER BY LIVE_NO";
